@@ -298,6 +298,40 @@ correspondants avec Glob et ne charge que ceux de moins de 200 lignes."
 entier que si les extraits sont insuffisants."
 ```
 
+### 8.1 Serveurs MCP recommandés
+
+Ces serveurs MCP matérialisent concrètement les principes de la section 3
+(mémoire externalisée + pré-filtrage sémantique). Ils sont **recommandés, pas
+imposés** : vérifiez toujours la config réelle (commande, `args`, variables
+d'environnement) dans le README du serveur avant de committer, et respectez les
+contraintes de sécurité de votre projet.
+
+| Serveur MCP            | Usage                                              | Lien |
+| ---------------------- | -------------------------------------------------- | ---- |
+| codebase-memory-mcp    | Mémoire de codebase + recherche sémantique (RAG)   | https://github.com/DeusData/codebase-memory-mcp |
+| server-filesystem      | Accès fichiers scopé (lecture ciblée)              | @modelcontextprotocol/server-filesystem |
+
+**Exemple de placeholder `.mcp.json`** (à compléter avec la doc réelle du serveur) :
+
+```json
+{
+  "mcpServers": {
+    "codebase-memory": {
+      "//": "Voir https://github.com/DeusData/codebase-memory-mcp — vérifier commande + variables d'env dans le README avant de committer.",
+      "command": "<voir README du repo>",
+      "args": ["<voir README du repo>"],
+      "env": {
+        "//": "À remplir selon la doc (index, modèle d'embeddings, etc.)"
+      }
+    }
+  }
+}
+```
+
+> ⚠️ Ne collez jamais une config MCP inventée. Un serveur mal configuré, non
+> scopé ou pointant sur la racine du repo peut au contraire faire exploser le
+> contexte et les coûts.
+
 ---
 
 ## 9. Choisir le bon modèle par tâche
