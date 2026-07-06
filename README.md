@@ -35,6 +35,16 @@ This repository packages battle-tested **best practices for AI-guided developmen
 - **Right model for the task** — Haiku to explore, Sonnet to build, Opus to reason.
 - **Guardrails everywhere** — restricted tools, bounded `maxTurns`, explicit stop conditions.
 
+### 🔌 Recommended MCP servers
+
+To power **externalized memory** and **semantic pre-filtering**, we recommend a
+dedicated codebase-memory MCP server:
+
+- **codebase-memory-mcp** — https://github.com/DeusData/codebase-memory-mcp
+
+> Recommended, not mandatory. Always check the server's README for the real
+> install command and environment variables before committing your `.mcp.json`.
+
 ### Recommended workflow
 
 `Explore (Haiku) → Plan (Opus, validated) → Implement (Sonnet) → Verify (Haiku, bounded)`
@@ -73,6 +83,17 @@ Ce dépôt regroupe des **bonnes pratiques éprouvées du développement guidé 
 - **Discipline de session** — phases séquentielles avec reset de contexte (`/clear`) entre chaque.
 - **Le bon modèle pour la tâche** — Haiku pour explorer, Sonnet pour coder, Opus pour raisonner.
 - **Garde-fous partout** — outils restreints, `maxTurns` bornés, conditions d'arrêt explicites.
+
+### 🔌 Serveurs MCP recommandés
+
+Pour alimenter la **mémoire externalisée** et le **pré-filtrage sémantique**,
+nous recommandons un serveur MCP de mémoire de codebase :
+
+- **codebase-memory-mcp** — https://github.com/DeusData/codebase-memory-mcp
+
+> Recommandé, pas imposé. Vérifiez toujours le README du serveur pour la commande
+> d'installation et les variables d'environnement réelles avant de committer
+> votre `.mcp.json`.
 
 ### Cycle recommandé
 
