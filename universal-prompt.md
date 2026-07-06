@@ -115,12 +115,19 @@ RÈGLES PAR ARTEFACT :
 
 7) .mcp.json — uniquement si pertinent :
    - Serveurs MCP SCOPÉS (jamais la racine du repo).
-   - Prévoir un serveur de recherche sémantique (pré-filtrage vectoriel) en
-     placeholder si le corpus est large, avec un commentaire d'installation.
+   - Pour la mémoire de codebase et le pré-filtrage sémantique, PROPOSE
+     (sans l'imposer) un serveur MCP dédié, par exemple :
+     codebase-memory-mcp — https://github.com/DeusData/codebase-memory-mcp
+   - Ajoute-le en placeholder COMMENTÉ. Indique que l'équipe doit vérifier la
+     commande d'installation et les variables d'environnement RÉELLES dans le
+     README du serveur choisi avant de committer.
+   - N'invente JAMAIS la config d'un serveur MCP tiers : laisse des placeholders
+     explicites si tu n'as pas la doc réelle.
 
 PRINCIPES TRANSVERSAUX À RESPECTER PARTOUT :
 - Mémoire externalisée (fichiers) plutôt que contexte conversationnel.
-- Pré-filtrage sémantique avant lecture de fichiers larges.
+- Pré-filtrage sémantique / mémoire de codebase : privilégier un serveur MCP
+  dédié (ex. codebase-memory-mcp) plutôt que des lectures de fichiers entiers.
 - Discipline de session : phases + reset de contexte, état écrit noir sur blanc.
 - Économie de tokens : outils restreints, modèles adaptés, maxTurns bornés,
   conditions d'arrêt explicites.
@@ -130,7 +137,8 @@ PRINCIPES TRANSVERSAUX À RESPECTER PARTOUT :
 LIVRABLE FINAL :
 - Crée réellement les fichiers.
 - Termine par un récapitulatif : arborescence générée + 1 ligne par fichier +
-  les points à personnaliser par l'équipe (modèles, commandes, skills métier).
+  les points à personnaliser par l'équipe (modèles, commandes, skills métier,
+  config réelle des serveurs MCP).
 
 Commence maintenant par la PHASE 1.
 ```
@@ -147,3 +155,5 @@ Commence maintenant par la PHASE 1.
 - Il **s'auto-adapte** : harness minimal pour un petit script, harness complet
   pour un monorepo.
 - **Réutilisable partout** : aucune techno n'est codée en dur, tout est détecté.
+- Pour la mémoire de codebase / le pré-filtrage sémantique, vois les
+  « Serveurs MCP recommandés » dans le guide.
