@@ -113,12 +113,19 @@ RULES PER ARTIFACT:
 
 7) .mcp.json — only if relevant:
    - SCOPED MCP servers (never the repo root).
-   - Include a semantic-search server (vector pre-filtering) as a placeholder if
-     the corpus is large, with an install comment.
+   - For codebase memory and semantic pre-filtering, SUGGEST (do not impose) a
+     dedicated MCP server, for example:
+     codebase-memory-mcp — https://github.com/DeusData/codebase-memory-mcp
+   - Add it as a COMMENTED placeholder. State that the team must verify the REAL
+     install command and environment variables in the chosen server's README
+     before committing.
+   - NEVER invent a third-party MCP server config: leave explicit placeholders if
+     you don't have the real docs.
 
 CROSS-CUTTING PRINCIPLES TO RESPECT EVERYWHERE:
 - Externalized memory (files) over conversational context.
-- Semantic pre-filtering before reading large files.
+- Semantic pre-filtering / codebase memory: prefer a dedicated MCP server
+  (e.g. codebase-memory-mcp) over reading whole files.
 - Session discipline: phases + context reset, state written in black and white.
 - Token economy: restricted tools, adapted models, bounded maxTurns, explicit
   stop conditions.
@@ -127,7 +134,7 @@ CROSS-CUTTING PRINCIPLES TO RESPECT EVERYWHERE:
 FINAL DELIVERABLE:
 - Actually create the files.
 - End with a recap: generated tree + 1 line per file + items the team should
-  customize (models, commands, domain skills).
+  customize (models, commands, domain skills, real MCP server config).
 
 Start now with PHASE 1.
 ```
@@ -143,3 +150,5 @@ Start now with PHASE 1.
 - It **self-scales**: a minimal harness for a small script, a full harness for a
   monorepo.
 - **Reusable anywhere**: no technology is hard-coded; everything is detected.
+- For codebase memory / semantic pre-filtering, see "Recommended MCP servers" in
+  the guide.
