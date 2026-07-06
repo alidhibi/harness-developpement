@@ -296,6 +296,38 @@ Glob and only load those under 200 lines."
 snippets are insufficient."
 ```
 
+### 8.1 Recommended MCP servers
+
+These MCP servers concretely implement the principles of section 3 (externalized
+memory + semantic pre-filtering). They are **recommended, not mandatory**: always
+verify the real config (command, `args`, environment variables) in the server's
+README before committing, and respect your project's security constraints.
+
+| MCP server             | Use                                                | Link |
+| ---------------------- | -------------------------------------------------- | ---- |
+| codebase-memory-mcp    | Codebase memory + semantic search (RAG)            | https://github.com/DeusData/codebase-memory-mcp |
+| server-filesystem      | Scoped file access (targeted reads)                | @modelcontextprotocol/server-filesystem |
+
+**Example `.mcp.json` placeholder** (fill in with the server's real docs):
+
+```json
+{
+  "mcpServers": {
+    "codebase-memory": {
+      "//": "See https://github.com/DeusData/codebase-memory-mcp — verify command + env vars in the README before committing.",
+      "command": "<see repo README>",
+      "args": ["<see repo README>"],
+      "env": {
+        "//": "Fill in per docs (index, embeddings model, etc.)"
+      }
+    }
+  }
+}
+```
+
+> ⚠️ Never paste an invented MCP config. A misconfigured, unscoped server, or one
+> pointing at the repo root, can instead blow up your context and costs.
+
 ---
 
 ## 9. Choosing the right model per task
