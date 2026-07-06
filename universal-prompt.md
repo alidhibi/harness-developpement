@@ -1,3 +1,13 @@
+# Prompt universel — Générer le harness `.claude/` d'un projet
+
+> Copiez-collez ce prompt dans Claude Code (extension VS Code ou CLI), à la
+> racine de **n'importe quel** projet, dans **n'importe quelle** techno, de
+> **n'importe quelle** ampleur. Claude détecte votre stack, propose un plan
+> (que vous validez), puis génère le harness complet.
+
+---
+
+```markdown
 # MISSION : Générer le harness `.claude/` de ce projet
 
 Tu es un architecte spécialisé dans l'ingénierie de contexte pour agents de code.
@@ -15,7 +25,7 @@ Explore le projet SANS rien écrire. Utilise Glob/Grep et des lectures ciblées
 (pas de fichiers entiers inutiles, jamais les lockfiles/dist/node_modules).
 Détecte et rapporte de façon CONCISE :
 - Langage(s) et framework(s) principaux
-- Gestionnaire de paquets + commandes réelles (install, dev, build, test, lint, typecheck)
+- Gestionnaire de paquets + commandes RÉELLES (install, dev, build, test, lint, typecheck)
 - Runner de tests et convention de nommage des tests
 - Structure des dossiers (où vit le code source, les tests, la config)
 - Conventions visibles (lint/format, style de commit, patterns d'archi)
@@ -123,3 +133,17 @@ LIVRABLE FINAL :
   les points à personnaliser par l'équipe (modèles, commandes, skills métier).
 
 Commence maintenant par la PHASE 1.
+```
+
+---
+
+## Comment l'utiliser
+
+- Lance-le depuis la **racine du projet**. Privilégie un modèle capable pour les
+  phases Analyse/Plan (`/model opus` ou `/model sonnet`), puis redescends pour la
+  génération.
+- Le prompt **impose une validation** entre le plan et la génération — tu gardes
+  le contrôle et tu évites les skills inutiles.
+- Il **s'auto-adapte** : harness minimal pour un petit script, harness complet
+  pour un monorepo.
+- **Réutilisable partout** : aucune techno n'est codée en dur, tout est détecté.
